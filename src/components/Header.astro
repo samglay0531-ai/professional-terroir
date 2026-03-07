@@ -1,0 +1,73 @@
+---
+// src/components/Header.astro
+const navLinks = [
+  { text: '首頁', href: '/' },
+  { text: '文章', href: '/blog/' },
+  { text: '關於', href: '/about/' },
+  { text: '聯絡', href: '/contact/' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="logo">職場風土學</a>
+    <nav>
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class:list={['nav-link', { active: currentPath === link.href }]}
+        >
+          {link.text}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    border-bottom: 1px solid var(--color-muted);
+    background: var(--color-white);
+  }
+  .header-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+  .logo:hover {
+    color: var(--color-primary);
+  }
+  nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .nav-link {
+    font-size: 0.95rem;
+    color: var(--color-text);
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 640px) {
+    .header-inner {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    nav {
+      gap: 1rem;
+    }
+  }
+</style>
