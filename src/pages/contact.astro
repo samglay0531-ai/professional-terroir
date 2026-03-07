@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="聯絡">
+  <div class="page">
+    <h1>聯絡</h1>
+    <div class="page-content">
+      <p>歡迎以下類型的合作：</p>
+      <ul>
+        <li>演講邀約（HR、人才發展、組織文化主題）</li>
+        <li>專欄合作</li>
+        <li>企業內訓諮詢</li>
+      </ul>
+      <p>請來信：<a href="mailto:hello@professionalterroir.com">hello@professionalterroir.com</a></p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+  .page h1 {
+    margin-bottom: 2rem;
+  }
+  .page-content p {
+    margin-bottom: 1.25rem;
+    font-size: 1.05rem;
+    line-height: 2;
+  }
+  .page-content ul {
+    margin: 0.5rem 0 1.25rem 1.5rem;
+    line-height: 2;
+  }
+  .page-content a {
+    font-weight: 700;
+  }
+</style>

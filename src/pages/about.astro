@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="關於">
+  <div class="page">
+    <h1>關於</h1>
+    <div class="page-content">
+      <p>我是一位人力資源部門主管，同時具備教練背景與 WSET 葡萄酒認證。</p>
+      <p>「職場風土學」是我觀察組織與人才的筆記本。就像葡萄酒的風土決定了它的性格，一個組織的文化、制度與領導方式，也決定了人才能長成什麼樣子。</p>
+      <p>這裡的文章用品飲的語言，說職場的事。不賣雞湯，不講幹話，偶爾帶刺。</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+  .page h1 {
+    margin-bottom: 2rem;
+  }
+  .page-content p {
+    margin-bottom: 1.25rem;
+    font-size: 1.05rem;
+    line-height: 2;
+  }
+</style>
