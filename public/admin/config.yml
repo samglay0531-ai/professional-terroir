@@ -1,0 +1,33 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+locale: "zh_Hant"
+
+collections:
+  - name: "blog"
+    label: "文章"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "標題", name: "title", widget: "string" }
+      - { label: "摘要", name: "description", widget: "string" }
+      - { label: "發布日期", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - label: "分類"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "職場風土", value: "職場風土" }
+          - { label: "風土筆記", value: "風土筆記" }
+      - label: "標籤"
+        name: "tags"
+        widget: "list"
+        default: []
+        field: { label: "標籤", name: "tag", widget: "string" }
+      - { label: "封面圖", name: "image", widget: "image", required: false }
+      - { label: "草稿", name: "draft", widget: "boolean", default: false }
+      - { label: "內文", name: "body", widget: "markdown" }
