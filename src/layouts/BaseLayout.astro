@@ -42,6 +42,10 @@ const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
             });
           }
         });
+        var hash = window.location.hash;
+        if (hash.includes("recovery_token") || hash.includes("invite_token") || hash.includes("confirmation_token")) {
+          window.netlifyIdentity.open();
+        }
       }
     </script>
   </body>
