@@ -34,19 +34,22 @@ const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
     </main>
     <Footer />
     <script is:inline>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
+      (function() {
         var hash = window.location.hash;
-        if (hash.includes("recovery_token") || hash.includes("invite_token") || hash.includes("confirmation_token")) {
-          window.netlifyIdentity.open();
+        if (hash && (hash.includes("recovery_token") || hash.includes("invite_token") || hash.includes("confirmation_token"))) {
+          window.location.href = "/admin/" + hash;
+          return;
         }
-      }
+        if (window.netlifyIdentity) {
+          window.netlifyIdentity.on("init", function(user) {
+            if (!user) {
+              window.netlifyIdentity.on("login", function() {
+                document.location.href = "/admin/";
+              });
+            }
+          });
+        }
+      })();
     </script>
   </body>
 </html>
