@@ -8,10 +8,19 @@
 </head>
 <body>
   <script>
-    var hash = window.location.hash;
-    if (hash && (hash.includes("recovery_token") || hash.includes("invite_token"))) {
-      window.netlifyIdentity.open();
-    }
+    (function() {
+      var hash = window.location.hash;
+      var hasToken = hash && (
+        hash.includes("recovery_token") ||
+        hash.includes("invite_token") ||
+        hash.includes("confirmation_token")
+      );
+      if (hasToken && window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", function() {
+          window.netlifyIdentity.open();
+        });
+      }
+    })();
   </script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
