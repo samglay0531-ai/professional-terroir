@@ -9,11 +9,17 @@ draft: false
 ---
 
 
-在高端職場的博弈中，我們偶爾需要從複雜的陳年風味中抽離
-回歸一種純粹的**「清晰」**。
+在高端職場的博弈中，我們偶
+<div style="background: #FAF6F1; padding: 1rem; border-radius: 4px; margin: 1rem 0;">
+
+爾需要從
+
+</div>
+複雜的陳年風味中抽離
+回歸一種純粹的**「<span style="color: #722F37">清晰</span><span style="color: #722F37">文字內容</span>」**。
 
 倒入杯中的 Villa Maria Sauvignon Blanc 2023，色澤是極其清淡的金黃
-如同一份未經塗抹的年度計劃。
+> 如同一份未經塗抹的年度計劃。
 它沒有波爾多左岸那種壓抑的木質單寧，取而代之的是 Marlborough 產區標誌性的草本植物氣息
 混雜著極具生命力的芭樂香。入口後，那股強烈而均衡的柑橘酸度，像是一把手術刀，
 精準地切開了味蕾的甜膩，展現出一種坦率且不加掩飾的風骨。
