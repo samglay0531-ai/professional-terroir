@@ -1,18 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry, render } from 'astro:content';
+
+const entry = await getEntry('pages', 'contact');
+const { Content } = await render(entry);
 ---
 
-<BaseLayout title="聯絡">
+<BaseLayout title={entry.data.title}>
   <div class="page">
-    <h1>聯絡</h1>
+    <h1>{entry.data.title}</h1>
     <div class="page-content">
-      <p>歡迎以下類型的合作：</p>
-      <ul>
-        <li>演講邀約（HR、人才發展、組織文化主題）</li>
-        <li>專欄合作</li>
-        <li>企業內訓諮詢</li>
-      </ul>
-      <p>請來信：<a href="mailto:hello@professionalterroir.com">hello@professionalterroir.com</a></p>
+      <Content />
     </div>
   </div>
 </BaseLayout>
@@ -26,16 +24,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .page h1 {
     margin-bottom: 2rem;
   }
-  .page-content p {
+  .page-content :global(p) {
     margin-bottom: 1.25rem;
     font-size: 1.05rem;
     line-height: 2;
   }
-  .page-content ul {
+  .page-content :global(ul) {
     margin: 0.5rem 0 1.25rem 1.5rem;
     line-height: 2;
   }
-  .page-content a {
+  .page-content :global(a) {
     font-weight: 700;
+  }
+  .page-content :global(hr) {
+    border: none;
+    border-top: 1px solid var(--color-muted);
+    margin: 2rem 0;
   }
 </style>

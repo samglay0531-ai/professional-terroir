@@ -1,0 +1,107 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import { getCollection } from 'astro:content';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = (await getCollection('blog', ({ data }) => !data.draft))
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  return paginate(posts, { pageSize: 8 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+
+const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const sidebarPosts = allPosts.map(post => ({
+  title: post.data.title,
+  slug: post.id,
+  tags: post.data.tags,
+  date: post.data.date,
+}));
+---
+
+<BaseLayout title="文章">
+  <div class="content-with-sidebar">
+    <section class="blog-list">
+      <h1>所有文章</h1>
+      <div class="post-grid">
+        {page.data.map(post => (
+          <PostCard
+            title={post.data.title}
+            description={post.data.description}
+            date={post.data.date}
+            category={post.data.category}
+            slug={post.id}
+            image={post.data.image}
+          />
+        ))}
+      </div>
+
+      {page.lastPage > 1 && (
+        <nav class="pagination">
+          {page.url.prev ? (
+            <a href={page.url.prev} class="pagination-link">← 上一頁</a>
+          ) : (
+            <span class="pagination-link disabled">← 上一頁</span>
+          )}
+          <span class="pagination-info">第 {page.currentPage} / {page.lastPage} 頁</span>
+          {page.url.next ? (
+            <a href={page.url.next} class="pagination-link">下一頁 →</a>
+          ) : (
+            <span class="pagination-link disabled">下一頁 →</span>
+          )}
+        </nav>
+      )}
+    </section>
+
+    <Sidebar posts={sidebarPosts} />
+  </div>
+</BaseLayout>
+
+<style>
+  .content-with-sidebar {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 3rem;
+  }
+  .blog-list h1 {
+    margin-bottom: 2rem;
+  }
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .pagination {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .pagination-link {
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .pagination-link.disabled {
+    color: #ccc;
+    pointer-events: none;
+  }
+  .pagination-info {
+    font-size: 0.85rem;
+    color: #888;
+  }
+
+  @media (max-width: 1024px) {
+    .content-with-sidebar {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
