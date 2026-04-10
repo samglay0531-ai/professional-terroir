@@ -8,12 +8,39 @@
   <link rel="stylesheet" href="https://unpkg.com/easymde@2.18.0/dist/easymde.min.css" />
   <script src="https://unpkg.com/easymde@2.18.0/dist/easymde.min.js"></script>
   <style>
+    /* === 加寬 Decap CMS 編輯面板 === */
+    /* Decap 預設把編輯區限制在約 800px 的卡片內，這裡強制填滿可用寬度 */
+    #nc-root [class*="CollectionTopContainer"],
+    #nc-root [class*="EditorToolbar"] ~ div,
+    #nc-root [class*="EntryContainer"],
+    #nc-root [class*="ControlPaneContainer"],
+    #nc-root [class*="PreviewPaneContainer"] {
+      max-width: none !important;
+    }
+    #nc-root [class*="ControlPaneContainer"] {
+      padding-left: 2rem !important;
+      padding-right: 2rem !important;
+    }
+    /* 把整張表單卡片的 max-width 打掉 */
+    #nc-root form[class*="EntryForm"],
+    #nc-root div[class*="StyledCard"],
+    #nc-root div[class*="ControlPane"] > div {
+      max-width: none !important;
+      width: 100% !important;
+    }
+
+    /* === EasyMDE 編輯器外觀 === */
     .EasyMDEContainer { width: 100%; }
-    .EasyMDEContainer .CodeMirror { min-height: 400px; font-size: 15px; line-height: 1.8; }
+    /* 編輯區高度填滿可視範圍，大幅減少上下捲動 */
+    .EasyMDEContainer .CodeMirror {
+      min-height: calc(100vh - 260px);
+      font-size: 15px;
+      line-height: 2.0;
+    }
     .EasyMDEContainer .editor-preview,
     .EasyMDEContainer .editor-preview-side {
       font-family: 'Noto Sans TC', sans-serif;
-      line-height: 1.8;
+      line-height: 2.0;
       padding: 1rem;
     }
     .EasyMDEContainer .editor-preview h1,
@@ -24,7 +51,16 @@
     .EasyMDEContainer .editor-preview-side h3 {
       font-family: 'Noto Serif TC', serif;
     }
-    .EasyMDEContainer .editor-toolbar { flex-wrap: wrap; }
+
+    /* === Toolbar 固定在編輯區頂端，捲動時跟隨 === */
+    .EasyMDEContainer .editor-toolbar {
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      z-index: 10;
+      flex-wrap: wrap;
+    }
+
     /* Custom button labels */
     .editor-toolbar button.btn-text-color { font-size: 0; width: auto; min-width: 30px; }
     .editor-toolbar button.btn-text-color::after { content: 'A'; font-size: 16px; font-weight: bold; color: #722F37; }
@@ -69,7 +105,9 @@
             element: el,
             initialValue: this.props.value || '',
             spellChecker: false,
-            autofocus: true,
+            // 移除 autofocus 避免與 Decap CMS 掛載流程產生 race condition
+            // （autofocus 會在元件尚未完全就緒時搶焦點，造成首次按 Enter 失效）
+            autofocus: false,
             sideBySideFullscreen: false,
             status: false,
             renderingConfig: {
@@ -111,18 +149,9 @@
             ]
           });
 
-          // Auto-enable side-by-side on load
-          setTimeout(function() {
-            if (!self.mde) return;
-            try {
-              var wrapper = self.mde.codemirror.getWrapperElement().parentNode;
-              var preview = wrapper.querySelector('.editor-preview-side');
-              var isActive = preview && preview.classList.contains('editor-preview-active-side');
-              if (!isActive) {
-                EasyMDE.toggleSideBySide(self.mde);
-              }
-            } catch(e) {}
-          }, 200);
+          // 移除自動開啟 side-by-side 的 setTimeout
+          // 原因：此行為會在 CodeMirror 掛載後 200ms 切換 DOM 結構，造成鍵盤事件（尤其 Enter）偶發失效
+          // 需要即時預覽時，請手動點擊 toolbar 右側的 side-by-side 按鈕
 
           this.mde.codemirror.on('change', function() {
             self.props.onChange(self.mde.value());

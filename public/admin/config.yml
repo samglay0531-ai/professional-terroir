@@ -10,7 +10,7 @@ locale: "zh_Hant"
 collections:
   - name: "blog"
     label: "文章"
-    folder: "src/content/blog"
+    folder: "src/data/blog"
     create: true
     slug: "{{slug}}"
     fields:
@@ -37,7 +37,7 @@ collections:
     files:
       - name: "contact"
         label: "聯絡"
-        file: "src/content/pages/contact.md"
+        file: "src/data/pages/contact.md"
         fields:
           - { label: "標題", name: "title", widget: "string" }
           - { label: "內文", name: "body", widget: "markdown" }
