@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: samglay0531-ai/professional-terroir
   branch: main
 
 media_folder: "public/images/uploads"

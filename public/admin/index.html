@@ -4,24 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>內容管理 | 職場風土學</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-  <script>
-    (function() {
-      var hash = window.location.hash;
-      var hasToken = hash && (
-        hash.includes("recovery_token") ||
-        hash.includes("invite_token") ||
-        hash.includes("confirmation_token")
-      );
-      if (hasToken && window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", function() {
-          window.netlifyIdentity.open();
-        });
-      }
-    })();
-  </script>
   <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
 </body>
 </html>
