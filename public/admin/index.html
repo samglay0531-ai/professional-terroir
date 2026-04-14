@@ -5,43 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>內容管理 | 職場風土學</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <style>
-    /* === 加寬 Decap CMS 編輯面板 === */
-    #nc-root [class*="CollectionTopContainer"],
-    #nc-root [class*="EditorToolbar"] ~ div,
-    #nc-root [class*="EntryContainer"],
-    #nc-root [class*="ControlPaneContainer"],
-    #nc-root [class*="PreviewPaneContainer"] {
-      max-width: none !important;
-    }
-    #nc-root [class*="ControlPaneContainer"] {
-      padding-left: 2rem !important;
-      padding-right: 2rem !important;
-    }
-    #nc-root form[class*="EntryForm"],
-    #nc-root div[class*="StyledCard"],
-    #nc-root div[class*="ControlPane"] > div {
-      max-width: none !important;
-      width: 100% !important;
-    }
-
-    /* === 內建 markdown 編輯器加高 === */
-    #nc-root [class*="ControlPane"] [data-slate-editor="true"],
-    #nc-root [class*="ControlPane"] .cms-editor-visual,
-    #nc-root [class*="RawEditor"] textarea {
-      min-height: calc(100vh - 300px) !important;
-      font-size: 15px !important;
-      line-height: 2.0 !important;
-    }
-
-    /* === 內建編輯器 toolbar sticky === */
-    #nc-root [class*="Toolbar"] {
-      position: sticky !important;
-      top: 0 !important;
-      background: #ffffff !important;
-      z-index: 10 !important;
-    }
-  </style>
 </head>
 <body>
   <script>
@@ -59,45 +22,6 @@
       }
     })();
   </script>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  <script>
-    // 註冊自訂編輯器元件：文字顏色（酒紅色）
-    CMS.registerEditorComponent({
-      id: "text-color",
-      label: "文字顏色（酒紅）",
-      fields: [
-        { name: "text", label: "文字內容", widget: "string" }
-      ],
-      pattern: /^<span style="color: #722F37">(.*?)<\/span>$/,
-      fromBlock: function(match) {
-        return { text: match[1] };
-      },
-      toBlock: function(data) {
-        return '<span style="color: #722F37">' + data.text + '</span>';
-      },
-      toPreview: function(data) {
-        return '<span style="color: #722F37">' + data.text + '</span>';
-      }
-    });
-
-    // 註冊自訂編輯器元件：顏色區塊
-    CMS.registerEditorComponent({
-      id: "color-block",
-      label: "顏色區塊",
-      fields: [
-        { name: "content", label: "區塊內容", widget: "text" }
-      ],
-      pattern: /^<div style="background: #FAF6F1; padding: 1rem; border-radius: 4px; margin: 1rem 0;">\n\n([\s\S]*?)\n\n<\/div>$/,
-      fromBlock: function(match) {
-        return { content: match[1] };
-      },
-      toBlock: function(data) {
-        return '<div style="background: #FAF6F1; padding: 1rem; border-radius: 4px; margin: 1rem 0;">\n\n' + data.content + '\n\n</div>';
-      },
-      toPreview: function(data) {
-        return '<div style="background: #FAF6F1; padding: 1rem; border-radius: 4px; margin: 1rem 0;">' + data.content + '</div>';
-      }
-    });
-  </script>
+  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
 </body>
 </html>
