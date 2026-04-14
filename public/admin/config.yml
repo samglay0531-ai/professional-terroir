@@ -2,8 +2,8 @@ backend:
   name: github
   repo: samglay0531-ai/professional-terroir
   branch: main
-  auth_type: pkce
-  app_id: Ov23liGT7qNHrEzPpjgW
+  base_url: https://professional-terroir.samglay0531.workers.dev
+  auth_endpoint: auth
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
