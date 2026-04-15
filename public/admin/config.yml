@@ -2,7 +2,7 @@ backend:
   name: github
   repo: samglay0531-ai/professional-terroir
   branch: main
-  base_url: https://professional-terroir.samglay0531.workers.dev
+  base_url: https://professional-terroir.pages.dev
   auth_endpoint: auth
 
 media_folder: "public/images/uploads"
