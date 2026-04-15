@@ -17,18 +17,17 @@ export async function onRequestGet(context) {
   });
 
   const data = await response.json();
-  const token = data.access_token || '';
-  const error = data.error || '';
 
-  const status = error ? 'error' : 'success';
-  const content = JSON.stringify(error || token);
+  let message;
+  if (data.error) {
+    message = `authorization:github:error:${JSON.stringify({ error: data.error })}`;
+  } else {
+    message = `authorization:github:success:${JSON.stringify({ provider: 'github', token: data.access_token })}`;
+  }
 
   const html = `<!doctype html><html><body><script>
 (function() {
-  window.opener.postMessage(
-    'authorization:github:${status}:${content}',
-    '*'
-  );
+  window.opener.postMessage('${message}', '*');
 })();
 </script></body></html>`;
 
