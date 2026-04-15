@@ -2,11 +2,13 @@ export const prerender = false;
 
 import type { APIRoute } from 'astro';
 
-export const GET: APIRoute = async ({ request }) => {
-  const url = new URL(request.url);
+export const GET: APIRoute = async (context) => {
+  const runtime = (context.locals as any).runtime;
+  const clientId = runtime?.env?.GITHUB_CLIENT_ID || import.meta.env.GITHUB_CLIENT_ID;
+  const clientSecret = runtime?.env?.GITHUB_CLIENT_SECRET || import.meta.env.GITHUB_CLIENT_SECRET;
+
+  const url = new URL(context.request.url);
   const code = url.searchParams.get('code');
-  const clientId = import.meta.env.GITHUB_CLIENT_ID;
-  const clientSecret = import.meta.env.GITHUB_CLIENT_SECRET;
 
   const response = await fetch('https://github.com/login/oauth/access_token', {
     method: 'POST',
@@ -21,7 +23,7 @@ export const GET: APIRoute = async ({ request }) => {
     }),
   });
 
-  const data = await response.json();
+  const data: any = await response.json();
   const token = data.access_token || '';
   const error = data.error || '';
 
