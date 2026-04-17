@@ -1,5 +1,6 @@
 ---
 title: 當年巴黎審判撕掉了紅酒標籤，現在 AI 正在撕掉你應徵者的學歷標籤
+slug: paris-tasting-ai
 description: 技能就是新世界的釀造工藝，別再把頂尖人才誤判為餐酒。
 date: 2026-04-14
 category: 職場風土

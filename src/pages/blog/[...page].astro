@@ -18,7 +18,7 @@ const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
 
 const sidebarPosts = allPosts.map(post => ({
   title: post.data.title,
-  slug: post.id,
+  slug: post.data.slug,
   tags: post.data.tags,
   date: post.data.date,
 }));
@@ -35,7 +35,7 @@ const sidebarPosts = allPosts.map(post => ({
             description={post.data.description}
             date={post.data.date}
             category={post.data.category}
-            slug={post.id}
+            slug={post.data.slug}
             image={post.data.image}
           />
         ))}

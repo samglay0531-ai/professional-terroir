@@ -1,5 +1,6 @@
 ---
 title: 《熟成後的變異：別把高年份的陳釀，當成過期的葡萄汁》
+slug: aged-talent
 description: 中高齡的「雙週期」輪調
 date: 2026-03-24
 category: 職場風土

@@ -1,5 +1,6 @@
 ---
 title: 滿分的詛咒：當釀酒師不再看土地，而是看 Robert Parker 的臉色
+slug: parker-curse
 description: You get what you measure
 date: 2026-04-10
 category: 職場風土
@@ -15,7 +16,7 @@ draft: false
 
 **酒窖裡的「眼鏡蛇災難**」
 
-經濟學家 Charles Goodhart 曾說過：「<span style="color: #722F37">當一個指標成為目標，它就不再是好的指標。</span>」  
+經濟學家 Charles Goodhart 曾說過：「當一個指標成為目標，它就不再是好的指標。」  
 
 <br><br>
 
