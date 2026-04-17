@@ -25,3 +25,5 @@ pnpm-debug.log*
 
 # Tina CMS
 # tina/__generated__ is tracked for Tina Cloud compatibility
+
+node_modules
