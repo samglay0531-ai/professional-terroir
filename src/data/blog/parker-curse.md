@@ -1,6 +1,5 @@
 ---
 title: 滿分的詛咒：當釀酒師不再看土地，而是看 Robert Parker 的臉色
-slug: parker-curse
 description: You get what you measure
 date: 2026-04-10
 category: 職場風土
@@ -8,9 +7,12 @@ tags:
   - 招募
 image: /images/uploads/gemini_generated_image_iw8i0siw8i0siw8i.png
 draft: false
+slug: parker-curse
 ---
 
 你是否也曾在挑選紅酒時，看著酒標上那個像考卷一樣的評分（例如 RP 95）成為說服你購買的理由？彷彿那兩位數的數字成為你**掏錢的打包票**，但你有沒有發現，那些拿著高分、身價越來越貴的名門貴族，嚐起來卻越來越像：厚重的橡木桶味、高到像在吃熟透黑李的甜感，以及強烈到讓你懷疑在啃木頭的單寧。
+
+
 
 ## 這不是你的品味出了問題，而是整個紅酒界玩了一場長達數十年的「量測遊戲」。
 
