@@ -24,4 +24,4 @@ pnpm-debug.log*
 .idea/
 
 # Tina CMS
-tina/__generated__
+# tina/__generated__ is tracked for Tina Cloud compatibility
