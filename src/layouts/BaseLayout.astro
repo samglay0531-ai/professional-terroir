@@ -26,7 +26,6 @@ const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
     {image && <meta property="og:image" content={image} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script data-goatcounter="https://professionalterroir.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
     <Header />
@@ -34,24 +33,6 @@ const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
       <slot />
     </main>
     <Footer />
-    <script is:inline>
-      (function() {
-        var hash = window.location.hash;
-        if (hash && (hash.includes("recovery_token") || hash.includes("invite_token") || hash.includes("confirmation_token"))) {
-          window.location.href = "/admin/" + hash;
-          return;
-        }
-        if (window.netlifyIdentity) {
-          window.netlifyIdentity.on("init", function(user) {
-            if (!user) {
-              window.netlifyIdentity.on("login", function() {
-                document.location.href = "/admin/";
-              });
-            }
-          });
-        }
-      })();
-    </script>
   </body>
 </html>
 
