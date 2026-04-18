@@ -54,7 +54,9 @@ img {
 
 /* 文章內容排版 — 放在 global 確保不受 scoping 影響 */
 .post-content p {
-  margin-bottom: 1.25rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid red;
 }
 .post-content h2 {
   margin-top: 2rem;
