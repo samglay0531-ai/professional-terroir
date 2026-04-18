@@ -24,8 +24,4 @@ SSS
 
 SSSS
 
-SSsssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-
-****
-
-***
+SSsssssssssssssssssssssssssssssssssssssssssssssssssssssssss
