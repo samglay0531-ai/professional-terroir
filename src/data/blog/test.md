@@ -18,8 +18,7 @@ ABC
 
 > DDD\
 > \
-> \
->
+> \\
 
 SSS
 
@@ -27,6 +26,6 @@ SSSS
 
 SSsssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
 
-**sssssA**
-
 ****
+
+***
