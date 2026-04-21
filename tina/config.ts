@@ -55,8 +55,11 @@ export default defineConfig({
           {
             name: "body",
             label: "內文",
-            type: "rich-text",
+            type: "string",
             isBody: true,
+            ui: {
+              component: "textarea",
+            },
           },
         ],
       },
@@ -70,8 +73,11 @@ export default defineConfig({
           {
             name: "body",
             label: "內文",
-            type: "rich-text",
+            type: "string",
             isBody: true,
+            ui: {
+              component: "textarea",
+            },
           },
         ],
       },
